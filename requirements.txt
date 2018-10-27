@@ -1,3 +1,6 @@
+scikit-learn
+pandas
+matplotlib
 pyinstaller
 pylint
 autopep8
