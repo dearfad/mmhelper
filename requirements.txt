@@ -2,7 +2,3 @@ jupyterlab
 scikit-learn
 pandas
 matplotlib
-python-docx
-pyinstaller
-pylint
-autopep8
