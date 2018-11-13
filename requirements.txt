@@ -1,7 +1,4 @@
-jupyterlab
-ipywidgets
+jupyter
 jupyter_contrib_nbextensions
 scikit-learn
 pandas
-matplotlib
-seaborn
