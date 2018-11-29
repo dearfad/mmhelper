@@ -4,3 +4,5 @@ pandas
 seaborn
 xlrd
 autopep8
+xgboost
+pylint
