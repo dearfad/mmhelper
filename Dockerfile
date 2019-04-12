@@ -1,1 +1,2 @@
-FROM scratch
+FROM alpine
+RUN apk add vim
