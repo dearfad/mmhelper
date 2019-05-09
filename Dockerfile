@@ -1,2 +1,1 @@
-FROM alpine
-RUN apk add vim
+FROM jupyter/scipy-notebook
