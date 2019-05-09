@@ -3,7 +3,7 @@ FROM jupyter/scipy-notebook
 USER $NB_USER
 
 RUN pip install jupyter_contrib_nbextensions && \
-    pip install xgboost --user && \
+    pip install xgboost && \
     jupyter contrib nbextension install --user && \
     jupyter nbextension enable spellchecker/main --user && \
     jupyter nbextension enable toc2/main --user && \
