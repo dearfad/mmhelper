@@ -7,7 +7,7 @@ RUN pip install jupyter_contrib_nbextensions && \
 
 RUN pip install xgboost
 
-# RUN jupyter nbextension enable hide_input_all/main --user && \
-    # jupyter nbextension enable freeze/main --user
+# RUN jupyter nbextension enable hide_input_all/main && \
+#     jupyter nbextension enable freeze/main
 
 COPY mmhelper.ipynb /home/jovyan/work/
