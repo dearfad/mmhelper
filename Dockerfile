@@ -3,10 +3,11 @@ FROM jupyter/scipy-notebook
 USER $NB_USER
 
 RUN pip install jupyter_contrib_nbextensions && \
-    pip install xgboost && \
-    jupyter contrib nbextension install --user && \
-    jupyter nbextension enable hinterland/hinterland --user && \
-    jupyter nbextension enable toc2/main --user && \
-    jupyter nbextension enable collapsible_headings/main --user
+    jupyter contrib nbextension install --user
+
+RUN pip install xgboost
+
+# RUN jupyter nbextension enable hide_input_all/main --user && \
+    # jupyter nbextension enable freeze/main --user
 
 COPY mmhelper.ipynb /home/jovyan/work/
