@@ -11,5 +11,3 @@ RUN jupyter nbextension enable hide_input_all/main && \
     jupyter nbextension enable freeze/main
 
 COPY mmhelper.ipynb /home/jovyan/work/
-
-RUN jupyter trust /home/jovyan/mmhelper.ipynb
