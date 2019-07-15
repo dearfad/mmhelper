@@ -6,3 +6,4 @@ xlrd
 autopep8
 xgboost
 pylint
+scikit-plot
