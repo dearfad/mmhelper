@@ -1,4 +1,4 @@
-- **更新日期：2019年11月29日，知乎排个版是真累**
+- **更新日期：2019年12月9日，知乎排个版是真累**
 
 ``` python
 from Poppy import Charge
@@ -178,6 +178,38 @@ result = chi2_contingency(cross_table, correction=False)  # Pearson Test
 print(pd.DataFrame(result[3]))
 print(f'X2= {round(result[0],3)}, p= {round(result[1],3)}')
 ```
+
+## t 检验
+
+- 再送一个独立样本t检验，检验前别忘了做Levene's test看方差是否齐啊，有了卡方和t检验，即使本文没看懂也可以用来做做常规数据分析了写写文章了。
+
+```python
+from scipy import stats
+import pandas as pd
+
+data = pd.read_excel('demo.xlsx')
+
+group = 'label'
+feature = 'height'
+print(round(data.groupby(group).mean(),2))
+
+group_0, group_1 = data[data[group]==0], data[data[group]==1]
+levene_p = round(stats.levene(group_0[feature], group_1[feature])[1], 3)
+print("Levene's Test p =", levene_p)
+
+if levene_p > 0.05:
+    test = 'Student'
+    statistic, pvalue = stats.ttest_ind(group_0[feature], group_1[feature], equal_var=True) # if p>0.05 Student's t-test
+else:
+    test = 'Welch'
+    statistic, pvalue = stats.ttest_ind(group_0[feature], group_1[feature], equal_var=False) # if p<0.05 Welch's t-test 
+
+print(f'test = {test}, stat = {round(statistic,4)}, p = {round(pvalue,3)}')
+```
+
+***
+
+
 
 **以下内容请勿观看**
 
