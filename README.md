@@ -42,14 +42,14 @@ Charge.E
 ### 1. 软件准备
 
 - **下载最新的[WinPython](http://winpython.github.io)**，里面版本很多，一般下载没有Zero/Ps2/cod标记的那个64位版本，如果没把握也可以用我这个SourceForge的[Winpython64-3.7.4.1.exe](https://sourceforge.net/projects/winpython/files/WinPython_3.7/3.7.4.1/Winpython64-3.7.4.1.exe/download)链接直接下载。正常安装即可，绿色软件开箱即用。打开后是这个样：![notebook](https://github.com/dearfad/mmhelper/blob/master/img/notebook.png?raw=true)
-- **下载最新的[mmhelper](https://github.com/dearfad/mmhelper/releases/download/v0.1.0-alpha/mmhelper-v0.1.0-alpha.zip)**，解压缩得到文件mmhelper.ipynb。<img> 什么，里面没多少代码啊，我还没弄完呢。
+- **下载最新的[mmhelper](https://github.com/dearfad/mmhelper/releases/download/v0.1.0-alpha/mmhelper-v0.1.0-alpha.zip)**，解压缩得到文件mmhelper.ipynb。
 
 ### 2. 使用
 
-- 点击安装目录里面的**Jupyter Notebook.exe**，会出现一个命令窗口并自动打开一个浏览器的网页，就在网页里面进行操作。如图<img>
+- 点击安装目录里面的**Jupyter Notebook.exe**，会出现一个命令窗口并自动打开一个浏览器的网页，就在网页里面进行操作。
 - 点击**Upload**，上传**mmhelper.ipynb**和**data.xlsx**，上传后文件位于winpython目录下的notebooks目录内，可视情况改动。
-- （可选）或者直接指定你的工作目录，编辑WinPython\scripts\settings\winpython.ini在最后添加路径。如图<img>
-- 点击**mmhelper.ipynb**，打开后点击右上角使之变为“可信的”。如图<img>
+- （可选）或者直接指定你的工作目录，编辑WinPython\scripts\settings\winpython.ini在最后添加路径。
+- 点击**mmhelper.ipynb**，打开后点击右上角使之变为“可信的”。
 - 点击Cell-Run All，当右侧Python 3旁边的空心圆不再闪烁即运行完毕。或者按顺序单独执行某一个单元格**shift+enter**或者**ctrl+enter**。
 - 快速去掉注释符号“#”，可使用快捷键CTRL+"/"
 
@@ -198,18 +198,63 @@ levene_p = round(stats.levene(group_0[feature], group_1[feature])[1], 3)
 print("Levene's Test p =", levene_p)
 
 if levene_p > 0.05:
+    # if p>0.05 Student's t-test
     test = 'Student'
-    statistic, pvalue = stats.ttest_ind(group_0[feature], group_1[feature], equal_var=True) # if p>0.05 Student's t-test
+    statistic, pvalue = stats.ttest_ind(group_0[feature], group_1[feature], equal_var=True) 
 else:
+    # if p<=0.05 Welch's t-test
     test = 'Welch'
-    statistic, pvalue = stats.ttest_ind(group_0[feature], group_1[feature], equal_var=False) # if p<0.05 Welch's t-test 
+    statistic, pvalue = stats.ttest_ind(group_0[feature], group_1[feature], equal_var=False)  
 
 print(f'test = {test}, stat = {round(statistic,4)}, p = {round(pvalue,3)}')
 ```
 
 ***
+***
 
+# ~ 梦开始的地方
 
+## 审阅读取数据表
+
+- 打开demo.xlsx看看数据文件，第一列一定是要预测的结果，一般选择二分类，当然多分类也可以，不过你的结果和解释就变得很多，最开始还是一定要弄二分类的0或者1。不同的分类都用数字表示，看性别那里0/1代表男/女，如果有其他的项目都变为0/1/2/3并在别的地方记录一下各自代表的类别。其实你将分类直接用文字表示也可以，不过就需要在计算的时候变换形式，当熟练的时候可以那样去做，或者数据量很大的时候不得不用代码进行转换了。
+
+| label | age | sex | height | weight |
+|:-----:|:---:|:---:|:------:|:------:|
+| 0     | 38  | 0   | 146    | 56     |
+| 0     | 53  | 1   | 142    | 90     |
+| 0     | 59  | 0   | 143    | 75     |
+| 0     | 35  | 1   | 169    | 78     |
+| 0     | 20  | 1   | 182    | 48     |
+| 0     | 39  | 1   | 144    | 55     |
+| 0     | 47  | 1   | 168    | 79     |
+| 0     | 54  | 1   | 175    | 42     |
+| 0     | 63  | 0   | 177    | 89     |
+| 0     | 64  | 0   | 158    | 75     |
+
+- 读取数据表的例子上面用了很多了，其实推荐使用的是.CSV格式，常见的也就这两种，代码如下。
+
+```python
+import pandas as pd
+
+data = pd.read_excel('demo.xlsx')
+# data = pd.read_csv('demo.csv')
+```
+
+- 读取完毕看一下你的数据是否如你想象一样正常读取，直接输入data然后执行即可。
+
+- 这些数据很枯燥的，怎么也得先来个带色的图爽一爽。
+
+```python
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+plt.figure(figsize=(14,10))
+sns.heatmap(round(data.corr(),2), linewidths=1, square=True, cmap='coolwarm', 
+            linecolor='white', annot=True, vmax=1, vmin=-1);
+# plt.savefig('Heatmap.svg')
+```
+
+![heatmap]()
 
 **以下内容请勿观看**
 
