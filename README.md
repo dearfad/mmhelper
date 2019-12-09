@@ -42,7 +42,7 @@ Charge.E
 ### 1. 软件准备
 
 - **下载最新的[WinPython](http://winpython.github.io)**，里面版本很多，一般下载没有Zero/Ps2/cod标记的那个64位版本，如果没把握也可以用我这个SourceForge的[Winpython64-3.7.4.1.exe](https://sourceforge.net/projects/winpython/files/WinPython_3.7/3.7.4.1/Winpython64-3.7.4.1.exe/download)链接直接下载。正常安装即可，绿色软件开箱即用。打开后是这个样：<img> 看不到图片么？不要紧，因为我还没传呢。
-- **下载最新的[mmhelper](https://github.com/dearfad/mmhelper/releases/download/v0.1.0-alpha/mmhelper-v0.1.0-alpha.zip)**，解压缩得到文件mmhelper.ipynb。<img> 什么，里面没多少代码啊，我还没弄完呢。
+- **下载最新的[mmhelper](https://github.com/dearfad/mmhelper/releases/download/v0.1.0-alpha/mmhelper-v0.1.0-alpha.zip)**，解压缩得到文件mmhelper.ipynb。![WinPython](https://github.com/dearfad/mmhelper/blob/master/img/winpython.png) 什么，里面没多少代码啊，我还没弄完呢。
 
 ### 2. 使用
 
