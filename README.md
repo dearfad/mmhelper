@@ -210,7 +210,6 @@ print(f'test = {test}, stat = {round(statistic,4)}, p = {round(pvalue,3)}')
 ```
 
 ***
-***
 
 # ~ 梦开始的地方
 
@@ -249,12 +248,19 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 
 plt.figure(figsize=(14,10))
-sns.heatmap(round(data.corr(),2), linewidths=1, square=True, cmap='coolwarm', 
-            linecolor='white', annot=True, vmax=1, vmin=-1);
+sns.heatmap(data.corr(), linewidths=1, square=True, cmap='coolwarm', fmt='.2f',
+            linecolor='white', vmax=1, vmin=-1, 
+            annot=True, annot_kws={'size':13,'weight':'normal', 'color':'black'});
 # plt.savefig('Heatmap.svg')
 ```
 
 ![heatmap](https://github.com/dearfad/mmhelper/blob/master/img/heatmap.png?raw=true)
+
+- 这样的图看着就很有意思了，label这个美丑只跟weight有那么一点负相关，咱们原来不是定的身高155-180，体重45-70的时候label的值为1么？按理不是label和height/weight都是强相关么？既然heatmap不能说明问题，那换一种图就很清楚了。
+
+![scatterplot](https://github.com/dearfad/mmhelper/blob/master/img/scatterplot.png?raw=true)
+
+- 图像可以清晰的显示变量之间的关系，但是用什么图形更好就需要对数据的理解了，需要的可以看看相关的教程，网上多的狠啊。
 
 **以下内容请勿观看**
 
