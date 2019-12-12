@@ -1,4 +1,4 @@
-- **更新日期：2019年12月11日，知乎排个版是真累**
+- **更新日期：2019年12月12日，知乎排个版是真累，暂时不放图了，每次上传都累死**
 
 ``` python
 from Poppy import Charge
@@ -41,7 +41,7 @@ Charge.E
 
 ### 1. 软件准备
 
-- **下载最新的[WinPython](http://winpython.github.io)**，里面版本很多，一般下载没有Zero/Ps2/cod标记的那个64位版本，如果没把握也可以用我这个SourceForge的[Winpython64-3.7.4.1.exe](https://sourceforge.net/projects/winpython/files/WinPython_3.7/3.7.4.1/Winpython64-3.7.4.1.exe/download)链接直接下载。正常安装即可，绿色软件开箱即用。打开后是这个样：![notebook](https://github.com/dearfad/mmhelper/blob/master/img/notebook.png?raw=true)
+- **下载最新的[WinPython](http://winpython.github.io)**，里面版本很多，一般下载没有Zero/Ps2/cod标记的那个64位版本，如果没把握也可以用我这个SourceForge的[Winpython64-3.7.4.1.exe](https://sourceforge.net/projects/winpython/files/WinPython_3.7/3.7.4.1/Winpython64-3.7.4.1.exe/download)链接直接下载。正常安装即可，绿色软件开箱即用。
 - **下载最新的[mmhelper](https://github.com/dearfad/mmhelper/releases/download/v0.1.0-alpha/mmhelper-v0.1.0-alpha.zip)**，解压缩得到文件mmhelper.ipynb。
 
 ### 2. 使用
@@ -216,20 +216,6 @@ print(f'test = {test}, stat = {round(statistic,4)}, p = {round(pvalue,3)}')
 ## 审阅读取数据表
 
 - 打开demo.xlsx看看数据文件，第一列一定是要预测的结果，一般选择二分类，当然多分类也可以，不过你的结果和解释就变得很多，最开始还是一定要弄二分类的0或者1。不同的分类都用数字表示，看性别那里0/1代表男/女，如果有其他的项目都变为0/1/2/3并在别的地方记录一下各自代表的类别。其实你将分类直接用文字表示也可以，不过就需要在计算的时候变换形式，当熟练的时候可以那样去做，或者数据量很大的时候不得不用代码进行转换了。
-
-| label | age | sex | height | weight |
-|:-----:|:---:|:---:|:------:|:------:|
-| 0     | 38  | 0   | 146    | 56     |
-| 0     | 53  | 1   | 142    | 90     |
-| 0     | 59  | 0   | 143    | 75     |
-| 0     | 35  | 1   | 169    | 78     |
-| 0     | 20  | 1   | 182    | 48     |
-| 0     | 39  | 1   | 144    | 55     |
-| 0     | 47  | 1   | 168    | 79     |
-| 0     | 54  | 1   | 175    | 42     |
-| 0     | 63  | 0   | 177    | 89     |
-| 0     | 64  | 0   | 158    | 75     |
-
 - 读取数据表的例子上面用了很多了，其实推荐使用的是.CSV格式，常见的也就这两种，代码如下。
 
 ```python
@@ -254,19 +240,46 @@ sns.heatmap(data.corr(), linewidths=1, square=True, cmap='coolwarm', fmt='.2f',
 # plt.savefig('Heatmap.svg')
 ```
 
-![heatmap](https://github.com/dearfad/mmhelper/blob/master/img/heatmap.png?raw=true)
+- 这样的图看着就很有意思了，label这个美丑只跟weight有那么一点负相关，咱们原来不是定的身高155-180，体重45-70的时候label的值为1么？按理不是label和height/weight都是强相关么？既然heatmap不能说明问题，那换一种图就很清楚了。最相关的时候要注意data.corr(methods='pearson')，线性正态的用**pearson**，非线性非正态的用**spearman**，分类变量的用**kendall**。所以对于label的0/1可以视为分类变量，其他的如age/sex/height/weight属于连续变量了，这样可以将他们按照每10或者若干个分组，然后用kendall相关比较合理些。
+- 图像可以清晰的显示变量之间的关系，但是用什么图形更好就需要对数据的理解了，需要的可以看看相关的教程，网上多的狠啊。这里留个位置以后细说。总之要对自己的数据有个清晰的理解才好往下一步进行计算。
 
-- 这样的图看着就很有意思了，label这个美丑只跟weight有那么一点负相关，咱们原来不是定的身高155-180，体重45-70的时候label的值为1么？按理不是label和height/weight都是强相关么？既然heatmap不能说明问题，那换一种图就很清楚了。
+## 分离数据
 
-![scatterplot](https://github.com/dearfad/mmhelper/blob/master/img/scatterplot.png?raw=true)
+- 进行计算之前首先要留一部分做验证模型的准确性的，通常来说我们统计了一大批数据，如果说要验证让你再去统计一些数据，你就会说为啥不一次统计完成呢？所以手里现有的资料就是你的全部家当了，再去统计没有时间和精力了。这样的话，我们就需要在这些数据里面拿出一些作为模型建立完成后最终进行验证的东西，无论你如何调整模型，分出去做验证的数据在你模型没调整完之前是不能参与模型的调整的。
 
-- 图像可以清晰的显示变量之间的关系，但是用什么图形更好就需要对数据的理解了，需要的可以看看相关的教程，网上多的狠啊。
+```python
+from sklearn.model_selection import train_test_split
+
+seed = 42
+testsize = 0.25
+X, y = data.values[:, 1:], data.values[:, 0]
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=testsize,  random_state=seed, shuffle=True, stratify=None)
+```
+
+- 这里分项说明一下，seed就是随机分组的种子，如果不设置每次分离的数据都是不一样的，所以还是设定为好，这样每次分离完成的数据都是一致的便于重复实验，至于设多少是随意的，网上很多人喜欢用42，渊源很深，涉及宇宙起源之类，有兴趣可以去细查查。testsize就分离出去的做验证数据的比例，默认是0.25，分出去四分之一做验证。y在这里就是label那一列，第一列哈。X就是除去y那一列的所有数据。shuffle就是分离之前洗洗牌，打乱一下顺序。stratify很重要，如果对于0/1分类数量差不多的时候设为默认的None就可以了，这种属于平衡数据；如果0/1比例差的很多，例如10000人里面有8个人死了，死了的是1，那么0/1分类就很不平衡，这个时候在我们分离数据的时候需要在训练和验证数据里面死亡占的比例都要与整体近似，这个时候需要设定stratify=y，就是与整体y的比例一样。
+
+## 交叉验证
+
+- 这一步就是看看模型有多大能力了，就是在训练模型的时候会把训练数据分为若干份，然后用每一份数据去训练模型得到一个分数，然后看看这么多份数据的平均分数和标准差。kfold这里就是设定如何将训练数据分组，StratifiedKFold可以保证每组里面0/1比例类似。然后设定了一个用默认参数建立的模型，这里选用决策树的方法DecisionTreeClassifier。用cross_val_score来计算评分，model/X_train/y_train/cv都很好理解了，重点是这个评分的方法很重要**scoring=???**。如果0/1比例差不多，那么用accuracy就可以了。如果0/1比例相差很多，就需要考虑下建立模型的意义何在了；想将所有少数得癌的都挑出来，就要用recall；如果需要在判断是癌的里面，真正是癌的占的比例很高，就需要用precision。这里非常重要，后面涉及到的评价也是以这个为主的。
+
+```python
+from sklearn.tree import DecisionTreeClassifier
+from sklearn.model_selection import StratifiedKFold
+from sklearn.model_selection import cross_val_score
+
+kfold = StratifiedKFold(n_splits=5, random_state=seed)
+model = DecisionTreeClassifier(random_state=seed)
+cv_score = cross_val_score(model, X_train, y_train, cv=kfold, scoring="accuracy")
+cv_mean = round(cv_score.mean(), 2)
+cv_std = round(cv_score.std(), 2)
+print(cv_score, cv_mean, cv_std)
+```
+
+- 查看交叉验证的结果，没有进行特征工程、调参一类的事情，如果这个时候就能得到一个完美的结果，感觉80%以上吧，10个里面我能才对8个就应该很好，除非是那种特别完美的数据集。这样临床应用就足够了，如果需要达到95%以上才能应用于临床我感觉用机器学习就不太合适了。
 
 **以下内容请勿观看**
 
 ```
-- 查看预测分组与相关变量的关系：例如需要预测tumor出现的机率，首先看一下tumor和其他变量的相互关系，正相关或者负相关都是可以的，当然是其中某一个越高越好，其他作为辅助这样得到的预测准确率就能高很多。然后，就是显示你专业水平的时候了！！！医学理论专业分析因果，这也是为什么计算机或者统计专业搞数学的无法独立完成我们的机器学习医学论文的原因，因为她们不明白各个因素之间的关系，所以也无法进行降维、特征选择等等了。看相关的图表很简单，这里主要是确认一下我们的数据有没有很明显的问题，像gestation和abortion是0.9就很合理啊。
-- 查看交叉验证和准确率结果：如果上面两个没有太大的问题，接着就大概看一下如果进行机器学习预测风险的话，我们大概能得到一个什么样的结果，这是通过我们最原始数据得到的，没有进行特征工程、调参一类的事情，如果这个时候就能得到一个完美的结果，感觉80%以上吧，10个里面我能才对8个就应该很好，除非是那种特别完美的数据集。这样临床应用就足够了，如果需要达到95%以上才能应用于临床我感觉用机器学习就不太合适了。
 - 查看学习曲线：无论原始的预测结果如何，都要首先看一下各个模型的学习曲线。通常的学习书籍都把这个放到最后模型选择的部分，但是对于需要快速完成论文的研究生来说就不合适了，边看边学到最后一看有问题了那可就慌的一P了。简单说，上面红线就是训练集得分，下面是用验证数据得分，就想象为准确率吧。横轴是病例数量，纵轴是得分。一般随着病例数增加红绿线逐渐收拢至一起，下图再增加数量也就65%左右了，再多查病例弄数据也就那样了，所以就没必要再去收集，专心研究别的模型就可以了，这对我们选择模型和确认学习数量是否合理非常必要。
 - 抉择：如果上面的预测结果相对较高，或者跟你文章结论预期准确率差不多，那么就可以继续按正式稿写下去了；否则要么初始预测不高结论不是很好，要么临床要求准确率必须达到一个程度才行，那就别走机器学习的路子了，赶快换别的写作方向吧；如果你用这个比较熟练了，也可以按照下面的方法继续弄一弄，看看准确率能否再升高一些达到预期水平。
 ```
