@@ -1,13 +1,7 @@
-FROM jupyter/tensorflow-notebook
+FROM python
 
-USER $NB_USER
+RUN pip install flask joblib
 
-RUN pip install jupyter_contrib_nbextensions && \
-    jupyter contrib nbextension install --user
+COPY demo.py /home/
 
-RUN pip install xgboost
-
-RUN jupyter nbextension enable hide_input_all/main && \
-    jupyter nbextension enable freeze/main
-
-COPY mmhelper.ipynb /home/jovyan/work/
+COPY demo.pkl /home/
