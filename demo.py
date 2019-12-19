@@ -38,4 +38,4 @@ if __name__ == '__main__':
 
     model = joblib.load("demo.pkl")
 
-    app.run(host='0.0.0.0', port='5000')
+    app.run(host='39.107.125.126', port='5000')
