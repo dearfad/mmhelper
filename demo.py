@@ -8,7 +8,7 @@ app = Flask(__name__)
 def predict():
 
 
-    form = '<form method="POST" action="http://127.0.0.1:5000" name="testform"> \
+    form = '<form method="POST" action="/" name="testform"> \
             Age: <input type="text" name="age" value="50"> \
             Sex: <input type="text" name="sex" value="1"> \
             Height: <input type="text" name="height" value="150"> \
@@ -38,4 +38,4 @@ if __name__ == '__main__':
 
     model = joblib.load("demo.pkl")
 
-    app.run(host='39.107.125.126', port='5000')
+    app.run()
