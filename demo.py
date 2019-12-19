@@ -24,7 +24,7 @@ def predict():
         weight = request.form.get('weight')
         predict = model.predict([[age, sex, height, weight]])
         result = f'<H1>result: {predict[0]}</H1>'
-        form = f'<form method="POST" action="" name="testform"> \
+        form = f'<form method="POST" action="/" name="testform"> \
             Age: <input type="text" name="age" value="{age}"> \
             Sex: <input type="text" name="sex" value="{sex}"> \
             Height: <input type="text" name="height" value="{height}"> \
