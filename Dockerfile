@@ -1,7 +1,9 @@
 FROM python
 
-RUN pip install flask joblib
+WORKDIR /home/dearfad
 
-COPY demo.py /home/
+RUN pip install flask joblib scikit-learn
 
-COPY demo.pkl /home/
+COPY ./demo.py .
+
+COPY ./demo.pkl .
