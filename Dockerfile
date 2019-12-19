@@ -1,11 +1,11 @@
-FROM python
+FROM python:3
 
-WORKDIR /home/dearfad
+WORKDIR /usr/src/app
 
 RUN pip install flask joblib scikit-learn
 
-COPY ./demo.py .
+COPY demo.py .
 
-COPY ./demo.pkl .
+COPY demo.pkl .
 
-CMD ['python', 'demo.py']
+CMD ["python", "./demo.py"]
