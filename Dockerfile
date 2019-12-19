@@ -4,8 +4,8 @@ WORKDIR /usr/src/app
 
 RUN pip install flask joblib scikit-learn
 
-COPY demo.py .
+COPY ./project/dmy/moon.py .
 
-COPY demo.pkl .
+COPY ./project/dmy/moon.pkl .
 
-CMD ["python", "./demo.py"]
+CMD ["python", "./moon.py"]
