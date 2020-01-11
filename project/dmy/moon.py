@@ -7,6 +7,8 @@ app = Flask(__name__)
 @app.route('/', methods=['GET', 'POST'])
 def predict():
 
+    css = '<style>form{width:300px;margin:20px auto;}</style>'
+    
     form = '<form method="POST" action="/"> \
                 \
                 Stage: \
@@ -130,7 +132,7 @@ def predict():
 
         result = f'<H3>预测5年预后: {death}</H3>'
 
-    return form + result
+    return css + form + result
 
 
 if __name__ == '__main__':
