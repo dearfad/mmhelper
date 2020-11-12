@@ -1,0 +1,76 @@
+site,recode
+Breast,Breast
+Melanoma of the Skin,Skin
+Lung and Bronchus,Lung
+Thyroid,Thyroid
+Acute Myeloid Leukemia,Hemopathy
+NHL - Extranodal,Hemopathy
+Pancreas,Pancreas
+Urinary Bladder,Bladder
+Ovary,Ovary
+Cecum,Intestinal
+Ascending Colon,Intestinal
+Chronic Lymphocytic Leukemia,Hemopathy
+Other Female Genital Organs,Genital
+Esophagus,Esophagus
+Cervix Uteri,Uteri
+Corpus Uteri,Uteri
+Rectum,Intestinal
+Hepatic Flexure,Intestinal
+Sigmoid Colon,Intestinal
+"Large Intestine, NOS",Intestinal
+Soft Tissue including Heart,Other
+"Peritoneum, Omentum and Mesentery",Other
+NHL - Nodal,Hemopathy
+Larynx,Larynx
+Liver,Liver
+Gum and Other Mouth,Mouth
+Salivary Gland,Mouth
+Kidney and Renal Pelvis,Kidney
+Miscellaneous,Other
+Myeloma,Hemopathy
+Descending Colon,Intestinal
+Ureter,Other
+Vulva,Other
+Gallbladder,Gallbladder
+Rectosigmoid Junction,Intestinal
+Small Intestine,Intestinal
+Brain,Brain
+Stomach,Stomach
+Tonsil,Mouth
+"Anus, Anal Canal and Anorectum",Intestinal
+Appendix,Intestinal
+Other Endocrine including Thymus,Other
+Eye and Orbit,Eye
+Other Biliary,Other
+Transverse Colon,Intestinal
+Tongue,Mouth
+Acute Monocytic Leukemia,Hemopathy
+Intrahepatic Bile Duct,Liver
+Hodgkin - Nodal,Hemopathy
+Other Acute Leukemia,Hemopathy
+"Aleukemic, Subleukemic and NOS",Hemopathy
+Chronic Myeloid Leukemia,Hemopathy
+"Trachea, Mediastinum and Other Respiratory Organs",Lung
+Hypopharynx,Mouth
+Retroperitoneum,Intestinal
+Acute Lymphocytic Leukemia,Hemopathy
+Other Urinary Organs,Other
+Floor of Mouth,Mouth
+Other Non-Epithelial Skin,Skin
+Cranial Nerves Other Nervous System,Brain
+Mesothelioma,Other
+"Uterus, NOS",Uteri
+Other Digestive Organs,Other
+Lip,Mouth
+Splenic Flexure,Intestinal
+Bones and Joints,Bone
+Other Myeloid/Monocytic Leukemia,Hemopathy
+Pleura,Lung
+"Nose, Nasal Cavity and Middle Ear",Nose
+Oropharynx,Mouth
+Nasopharynx,Nose
+Other Lymphocytic Leukemia,Hemopathy
+Vagina,Genital
+Other Oral Cavity and Pharynx,Mouth
+Kaposi Sarcoma,Sarcoma
