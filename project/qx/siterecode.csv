@@ -1,76 +1,76 @@
 site,recode
 Breast,Breast
-Melanoma of the Skin,Skin
-Lung and Bronchus,Lung
-Thyroid,Thyroid
-Acute Myeloid Leukemia,Hemopathy
-NHL - Extranodal,Hemopathy
-Pancreas,Pancreas
-Urinary Bladder,Bladder
-Ovary,Ovary
-Cecum,Intestinal
-Ascending Colon,Intestinal
-Chronic Lymphocytic Leukemia,Hemopathy
-Other Female Genital Organs,Genital
-Esophagus,Esophagus
-Cervix Uteri,Uteri
-Corpus Uteri,Uteri
-Rectum,Intestinal
-Hepatic Flexure,Intestinal
-Sigmoid Colon,Intestinal
-"Large Intestine, NOS",Intestinal
-Soft Tissue including Heart,Other
-"Peritoneum, Omentum and Mesentery",Other
-NHL - Nodal,Hemopathy
-Larynx,Larynx
-Liver,Liver
-Gum and Other Mouth,Mouth
-Salivary Gland,Mouth
-Kidney and Renal Pelvis,Kidney
+Melanoma of the Skin,Skin excluding Basal and Squamous
+Lung and Bronchus,Respiratory System
+Thyroid,Endocrine System
+Acute Myeloid Leukemia,All Lymphatic and Hematopoietic Diseases
+NHL - Extranodal,All Lymphatic and Hematopoietic Diseases
+Pancreas,Digestive System
+Urinary Bladder,Urinary System
+Ovary,Felmale Gential System
+Cecum,Digestive System
+Ascending Colon,Digestive System
+Chronic Lymphocytic Leukemia,All Lymphatic and Hematopoietic Diseases
+Other Female Genital Organs,Felmale Gential System
+Esophagus,Digestive System
+Cervix Uteri,Felmale Gential System
+Corpus Uteri,Felmale Gential System
+Rectum,Digestive System
+Hepatic Flexure,Digestive System
+Sigmoid Colon,Digestive System
+"Large Intestine, NOS",Digestive System
+Soft Tissue including Heart,Soft Tissue including Heart
+"Peritoneum, Omentum and Mesentery",Digestive System
+NHL - Nodal,All Lymphatic and Hematopoietic Diseases
+Larynx,Respiratory System
+Liver,Digestive System
+Gum and Other Mouth,Oral Cavity and Pharynx
+Salivary Gland,Oral Cavity and Pharynx
+Kidney and Renal Pelvis,Urinary System
 Miscellaneous,Other
-Myeloma,Hemopathy
-Descending Colon,Intestinal
-Ureter,Other
-Vulva,Other
-Gallbladder,Gallbladder
-Rectosigmoid Junction,Intestinal
-Small Intestine,Intestinal
-Brain,Brain
-Stomach,Stomach
-Tonsil,Mouth
-"Anus, Anal Canal and Anorectum",Intestinal
-Appendix,Intestinal
-Other Endocrine including Thymus,Other
-Eye and Orbit,Eye
-Other Biliary,Other
-Transverse Colon,Intestinal
-Tongue,Mouth
-Acute Monocytic Leukemia,Hemopathy
-Intrahepatic Bile Duct,Liver
-Hodgkin - Nodal,Hemopathy
-Other Acute Leukemia,Hemopathy
-"Aleukemic, Subleukemic and NOS",Hemopathy
-Chronic Myeloid Leukemia,Hemopathy
-"Trachea, Mediastinum and Other Respiratory Organs",Lung
-Hypopharynx,Mouth
-Retroperitoneum,Intestinal
-Acute Lymphocytic Leukemia,Hemopathy
-Other Urinary Organs,Other
-Floor of Mouth,Mouth
-Other Non-Epithelial Skin,Skin
-Cranial Nerves Other Nervous System,Brain
+Myeloma,All Lymphatic and Hematopoietic Diseases
+Descending Colon,Digestive System
+Ureter,Urinary System
+Vulva,Felmale Gential System
+Gallbladder,Digestive System
+Rectosigmoid Junction,Digestive System
+Small Intestine,Digestive System
+Brain,Brain and Other Nervous System
+Stomach,Digestive System
+Tonsil,Oral Cavity and Pharynx
+"Anus, Anal Canal and Anorectum",Digestive System
+Appendix,Digestive System
+Other Endocrine including Thymus,Endocrine System
+Eye and Orbit,Eye and Orbit
+Other Biliary,Digestive System
+Transverse Colon,Digestive System
+Tongue,Oral Cavity and Pharynx
+Acute Monocytic Leukemia,All Lymphatic and Hematopoietic Diseases
+Intrahepatic Bile Duct,Digestive System
+Hodgkin - Nodal,All Lymphatic and Hematopoietic Diseases
+Other Acute Leukemia,All Lymphatic and Hematopoietic Diseases
+"Aleukemic, Subleukemic and NOS",All Lymphatic and Hematopoietic Diseases
+Chronic Myeloid Leukemia,All Lymphatic and Hematopoietic Diseases
+"Trachea, Mediastinum and Other Respiratory Organs",Respiratory System
+Hypopharynx,Oral Cavity and Pharynx
+Retroperitoneum,Digestive System
+Acute Lymphocytic Leukemia,All Lymphatic and Hematopoietic Diseases
+Other Urinary Organs,Urinary System
+Floor of Mouth,Oral Cavity and Pharynx
+Other Non-Epithelial Skin,Skin excluding Basal and Squamous
+Cranial Nerves Other Nervous System,Brain and Other Nervous System
 Mesothelioma,Other
-"Uterus, NOS",Uteri
-Other Digestive Organs,Other
-Lip,Mouth
-Splenic Flexure,Intestinal
-Bones and Joints,Bone
-Other Myeloid/Monocytic Leukemia,Hemopathy
-Pleura,Lung
-"Nose, Nasal Cavity and Middle Ear",Nose
-Oropharynx,Mouth
-Nasopharynx,Nose
-Other Lymphocytic Leukemia,Hemopathy
-Vagina,Genital
-Other Oral Cavity and Pharynx,Mouth
-Kaposi Sarcoma,Sarcoma
+"Uterus, NOS",Urinary System
+Other Digestive Organs,Digestive System
+Lip,Oral Cavity and Pharynx
+Splenic Flexure,Digestive System
+Bones and Joints,Bones and Joints
+Other Myeloid/Monocytic Leukemia,All Lymphatic and Hematopoietic Diseases
+Pleura,Respiratory System
+"Nose, Nasal Cavity and Middle Ear",Respiratory System
+Oropharynx,Oral Cavity and Pharynx
+Nasopharynx,Oral Cavity and Pharynx
+Other Lymphocytic Leukemia,All Lymphatic and Hematopoietic Diseases
+Vagina,Felmale Gential System
+Other Oral Cavity and Pharynx,Oral Cavity and Pharynx
+Kaposi Sarcoma,Other
